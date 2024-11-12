@@ -6,7 +6,7 @@ let section = document.querySelector('section');
 async function populate() {
     // Introducing JavaScript Object Notation (JSON): https://json.org/
     // STEP 4: Store the URL of a JSON file in a variable */
-    const requestURL = 'https://pipetr.github.io/Lab4JS/js/i-scream.json';
+    const requestURL = 'https://ryanpatton8.github.io/COMP1073-Lab04/week_10/js/i-scream.json';
     // STEP 5: Use the new URL to create a new request object
     const request = new Request(requestURL);
     // STEP 6: Make a network request with the fetch() function, which returns a Response object
@@ -19,6 +19,8 @@ async function populate() {
     populateHeader(jsonObj);
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
     showTopFlavors(jsonObj);
+
+    showTheCalories(jsonObj);
 
 };
 // STEP 3b: Call the populate() function
@@ -48,7 +50,7 @@ function showTopFlavors(jsonObj) {
 
         // STEP 10f: Set the textContent property for each of the above elements (except the UL), based on the JSON content
         h2.textContent = topFlavors[i].name;
-        img.setAttribute('src', 'https://pipetr.github.io/Lab4JS/images/' + topFlavors[i].image);
+        img.setAttribute('src', 'https://ryanpatton8.github.io/COMP1073-Lab04/week_10/images/' + topFlavors[i].image);
 
         // STEP 10g: Build a loop for the ingredients array in the JSON
         let ingredients = topFlavors[i].ingredients;
@@ -56,6 +58,7 @@ function showTopFlavors(jsonObj) {
             let li = document.createElement('li');
             li.textContent = ingredients[j];
             ul.appendChild(li);
+
         }
         // add the ingredient to the UL
 
@@ -67,6 +70,14 @@ function showTopFlavors(jsonObj) {
         section.appendChild(article);
     };
 };
+
+function showTheCalories(objJson) {
+    let calories = objJson.topFlavors.map(flavor => flavor.calories).reduce((acc, curr) => acc + curr);
+    let p = document.createElement('p');
+    p.textContent = `You gonna get fat with this 4 ice creams, Total calories: ${calories}`;
+    section.appendChild(p);
+
+}
 // STEP 11: The instructor will edit the JSON file - refresh your page to see the updated content
 
 // STEP 12: Change the URL in STEP 3 to point to the JSON file in the local /js folder in order to prepare for today's lab
