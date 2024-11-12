@@ -1,8 +1,9 @@
 /* STEP 2: Reference the HEADER and the SECTION elements with variables */
-
+let header = document.querySelector('header');
+let section = document.querySelector('section');
 
 // STEP 3a: Create the asynchronous function populate()
-
+async function populate() {
     // Introducing JavaScript Object Notation (JSON): https://json.org/
     // STEP 4: Store the URL of a JSON file in a variable */
     
@@ -19,7 +20,7 @@
     // STEP 10a: Invoke the showTopFlavors function here, then build it below
     
 
-
+};
 // STEP 3b: Call the populate() function
 
 
